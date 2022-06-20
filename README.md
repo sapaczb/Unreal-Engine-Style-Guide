@@ -1,8 +1,6 @@
 Unreal Engine Style Guide
 
-## Linter and Style Guide Documentation
-
-More technical documentation regarding Linter and the Style Guide can be found at our [ReadTheDocs](https://ue4-style-guide.readthedocs.io/en/latest/) page.
+## Style Guide Documentation
 
 ## Table of contents
 - [Important Terminology](#important-terminology)
