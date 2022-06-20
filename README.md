@@ -127,11 +127,6 @@ More technical documentation regarding Linter and the Style Guide can be found a
 
 ## Important Terminology
 
-<a name="terms-level-map"></a>
-##### Levels/Maps
-
-The word 'map' generally refers to what the average person calls a 'level' and may be used interchangeably. See this term's history [here](https://en.wikipedia.org/wiki/Level_(video_gaming)).
-
 <a name="terms-identifiers"></a>
 ##### Identifiers
 An `Identifier` is anything that resembles or serves as a "name". For example, the name of an asset, or the name of a material later, or a blueprint property, a variable, or a folder name, or for a data table row name, etc...
@@ -152,41 +147,6 @@ There are a few different ways you can `CaseWordsWhenNaming`. Here are some comm
 > ###### Snake_case
 >
 > Words can arbitrarily start upper or lowercase but words are separated by an underscore, e.g. `desert_Eagle`, `Style_Guide`, `a_Series_of_Words`.
-
-<a name="terms-var-prop"></a>
-##### Variables / Properties
-
-The words 'variable' and 'property' in most contexts are interchangable. If they are both used together in the same context however:
-
-<a name="terms-property"></a>
-###### Property
-Usually refers to a variable defined in a class. For example, if `BP_Barrel` had a variable `bExploded`, `bExploded` may be referred to as a property of `BP_Barrel`.
-
-When in the context of a class, it is often used to imply accessing previously defined data.
-
-<a name="terms-variable"></a>
-###### Variable
-Usually refers to a variable defined as a function argument or a local variable inside a function.
-
-When in the context of a class, it is often used to convey discussion about its definition and what it will hold.
-
-<a name="0"></a>
-## 0. Principles
-
-<a name="0.1"></a>
-### 0.1 All structure, assets, and code in any Unreal Engine 4 project should look like a single person created it, no matter how many people contributed
-
-Moving from one project to another should not cause a re-learning of style and structure. Conforming to a style guide removes unneeded guesswork and ambiguities.
-
-It also allows for more productive creation and maintenance as one does not need to think about style. Simply follow the instructions. This style guide is written with best practices in mind, meaning that by following this style guide you will also minimize hard to track issues.
-
-<a name="0.2"></a>
-### 0.2 Friends do not let friends have bad style
-
-If you see someone working either against a style guide or no style guide, try to correct them.
-Nobody likes to help untangle someone's Blueprint spaghetti or deal with assets that have names they can't understand, so please; follow this guide!
-
-If you are helping someone whose new to the project, and comes from working with a different style, please be patient, and give them time to adapt.
 
 <a name="00"></a>
 ## 00. Globally Enforced Opinions
@@ -209,15 +169,14 @@ Any `Identifier` should strive to only have the following characters when possib
 * ABCDEFGHIJKLMNOPQRSTUVWXYZ
 * abcdefghijklmnopqrstuvwxyz
 * 1234567890
-* _ (almost never) *The ONLY exception to this is when we are implementing a RESTful API that has members with an _ character, and want to use Unreal Engine JSON parsing helpers: FJsonObjectConverter::JsonObjectStringToUStruct
 
-The reasoning for this is this will ensure the greatest compatibility of all data across all platforms across all tools, and help prevent downtime due to potentially bad character handling for identifiers in code you don't control.
+<a name="Variables/Properties-1"></a>
+#### Variables/Properties
+* _ (almost never) *The ONLY exception to this is when using FJsonObjectConverter::JsonObjectStringToUStruct and working with existing APIs
 
 <a name="anc"></a>
 <a name="1"></a>
 ## 1. Asset Naming Conventions
-
-Naming conventions should be treated as law. A project that conforms to a naming convention is able to have its assets managed, searched, parsed, and maintained with incredible ease.
 
 Most things are prefixed with prefixes being generally an acronym of the asset type followed by an underscore.
 
@@ -484,7 +443,7 @@ Packing 4 channels of data into a texture (RGBA) is not recommended except for a
 
 Equally important as asset names, the directory structure style of a project should be considered law. Asset naming conventions and content directory structure go hand in hand, and a violation of either causes unneeded chaos.
 
-There are multiple ways to lay out the content of a UE4 project. In this style, we will be using a structure that relies more on filtering and search abilities of the Content Browser for those working with assets to find assets of a specific type instead of another common structure that groups asset types with folders.
+As a rule of thumb, there is a organizational format we follow at the project level, but this same format also works when implementing/organizing different game modes.
 
 > If you are using the prefix [naming convention](#1.2) above, using folders to contain assets of similar types such as `Meshes`, `Textures`, and `Materials` is a redundant practice as asset types are already both sorted by prefix as well as able to be filtered in the content browser.
 
@@ -509,29 +468,44 @@ There are multiple ways to lay out the content of a UE4 project. In this style, 
         |   |-- Common
         |   |   |-- <a href="#2.7">Animations</a>
         |   |   |-- Audio
-        |   |-- Jack
-        |   |-- Steve
         |   |-- <a href="#2.1.3">Zoe</a>
         |-- <a href="#2.5">Core</a>
         |   |-- Characters
-        |   |-- Engine
-        |   |-- <a href="#2.1.2">GameModes</a>
         |   |-- Interactables
         |   |-- Pickups
         |   |-- Weapons
+        |   |-- BP_GenericShooterGameMode
+        |   |-- BP_GenericShooterGameState
+        |   |-- BP_GenericShooterGameSession
+        |   |-- BP_GenericShooterPlayerController
         |-- Effects
         |   |-- Electrical
         |   |-- Fire
         |   |-- Weather
         |-- <a href="#2.4">Maps</a>
+        |   |-- MainMenu
         |   |-- Campaign1
-        |   |-- Campaign2
         |-- <a href="#2.8">MaterialLibrary</a>
         |   |-- Debug
         |   |-- Metal
         |   |-- Paint
         |   |-- Utility
         |   |-- Weathering
+        |-- <a href="#2.1.2">Modes</a>
+        |   |-- CaptureTheFlag
+        |   |   |-- Art
+        |   |   |   |-- Flags
+        |   |   |-- Characters
+        |   |   |-- Core
+        |   |   |   | -- BP_CaptureTheFlagGameMode
+        |   |   |   | -- BP_CaptureTheFlagGameState
+        |   |   |   | -- BP_CaptureTheFlagGameSession
+        |   |   |   | -- BP_CaptureTheFlagPlayerController
+        |   |   |-- Effects
+        |   |   |-- Maps
+        |   |   |   |-- Rust
+        |   |   |   |-- TheFactory
+        |   |   |-- MaterialLibrary
         |-- Placeables
         |   |-- Pickups
         |-- Weapons
@@ -579,82 +553,32 @@ All of a project's assets should exist in a folder named after the project. For 
 
 > The `Developers` folder is not for assets that your project relies on and therefore is not project specific. See [Developer Folders](#2.3) for details about this.
 
-There are multiple reasons for this approach.
-
-<a name="2.2.1"></a>
-#### 2.2.1 No Global Assets
-
-Often in code style guides it is written that you should not pollute the global namespace and this follows the same principle. When assets are allowed to exist outside of a project folder, it often becomes much harder to enforce a strict structure layout as assets not in a folder encourages the bad behavior of not having to organize assets.
-
-Every asset should have a purpose, otherwise it does not belong in a project. If an asset is an experimental test and shouldn't be used by the project it should be put in a [`Developer`](#2.3) folder.
-
-<a name="2.2.2"></a>
-#### 2.2.2 Reduce Migration Conflicts
-
-When working on multiple projects it is common for a team to copy assets from one project to another if they have made something useful for both. When this occurs, the easiest way to perform the copy is to use the Content Browser's Migrate functionality as it will copy over not just the selected asset but all of its dependencies.
-
-These dependencies are what can easily get you into trouble. If two project's assets do not have a top level folder and they happen to have similarly named or already previously migrated assets, a new migration can accidentally wipe any changes to the existing assets.
-
-This is also the primary reason why Epic's Marketplace staff enforces the same policy for submitted assets.
-
-After a migration, safe merging of assets can be done using the 'Replace References' tool in the content browser with the added clarity of assets not belonging to a project's top level folder are clearly pending a merge. Once assets are merged and fully migrated, there shouldn't be another top level folder in your Content tree. This method is _100%_ guaranteed to make any migrations that occur completely safe.
-
-<a name="2.2.2e1"></a>
-##### 2.2.2e1 Master Material Example
-
-For example, say you created a master material in one project that you would like to use in another project so you migrated that asset over. If this asset is not in a top level folder, it may have a name like `Content/MaterialLibrary/M_Master`. If the target project doesn't have a master material already, this should work without issue.
-
-As work on one or both projects progress, their respective master materials may change to be tailored for their specific projects due to the course of normal development.
-
-The issue comes when, for example, an artist for one project created a nice generic modular set of static meshes and someone wants to include that set of static meshes in the second project. If the artist who created the assets used material instances based on `Content/MaterialLibrary/M_Master` as they're instructed to, when a migration is performed there is a great chance of conflict for the previously migrated `Content/MaterialLibrary/M_Master` asset.
-
-This issue can be hard to predict and hard to account for. The person migrating the static meshes may not be the same person who is familiar with the development of both project's master material, and they may not be even aware that the static meshes in question rely on material instances which then rely on the master material. The Migrate tool requires the entire chain of dependencies to work however, and so it will be forced to grab `Content/MaterialLibrary/M_Master` when it copies these assets to the other project and it will overwrite the existing asset.
-
-It is at this point where if the master materials for both projects are incompatible in _any way_, you risk breaking possibly the entire material library for a project as well as any other dependencies that may have already been migrated, simply because assets were not stored in a top level folder. The simple migration of static meshes now becomes a very ugly task.
-
-<a name="2.2.3"></a>
-#### 2.2.3 Samples, Templates, and Marketplace Content Are Risk-Free
-
-An extension to [2.2.2](#2.2.2), if a team member decides to add sample content, template files, or assets they bought from the marketplace, it is guaranteed, as long your project's top-level folder is uniquely named,that these new assets will not interfere with your project.
-
-You can not trust marketplace content to fully conform to the [top level folder rule](#2.2). There exists many assets that have the majority of their content in a top level folder but also have possibly modified Epic sample content as well as level files polluting the global `Content` folder.
-
-When adhering to [2.2](#2.2), the worst marketplace conflict you can have is if two marketplace assets both have the same Epic sample content. If all your assets are in a project specific folder, including sample content you may have moved into your folder, your project will never break.
-
 <a name="2.2.4"></a>
 #### 2.2.4 DLC, Sub-Projects, and Patches Are Easily Maintained
 
-If your project plans to release DLC or has multiple sub-projects associated with it that may either be migrated out or simply not cooked in a build, assets relating to these projects should have their own separate top level content folder. This make cooking DLC separate from main project content far easier. Sub-projects can also be migrated in and out with minimal effort. If you need to change a material of an asset or add some very specific asset override behavior in a patch, you can easily put these changes in a patch folder and work safely without the chance of breaking the core project.
+Any DLC, sub-project(s), or unrelated assets should have their own separate top level content folder. This makes it far easier to cook these separately from the main project. 
+If there needs to be specific asset/material override behavior in a patch, you can easily put these changes in a patch folder and work safely without the chance of breaking the core project.
 
 <a name="2.3"></a>
 <a name="structure-developers"></a>
 ### 2.3 Use Developers Folder For Local Testing
 
-During a project's development, it is very common for team members to have a sort of 'sandbox' where they can experiment freely without risking the core project. Because this work may be ongoing, these team members may wish to put their assets on a project's source control server. Not all teams require use of Developer folders, but ones that do use them often run into a common problem with assets submitted to source control.
-
-It is very easy for a team member to accidentally use assets that are not ready for use, which will cause issues once those assets are removed. For example, an artist may be iterating on a modular set of static meshes and still working on getting their sizing and grid snapping correct. If a world builder sees these assets in the main project folder, they might use them all over a level not knowing they could be subject to incredible change and/or removal. This causes massive amounts of re-working for everyone on the team to resolve.
-
-If these modular assets were placed in a Developer folder, the world builder should never have had a reason to use them and the whole issue would never happen. The Content Browser has specific View Options that will hide Developer folders (they are hidden by default) making it impossible to accidentally use Developer assets under normal use.
-
-Once the assets are ready for use, an artist simply has to move the assets into the project specific folder and fix up redirectors. This is essentially 'promoting' the assets from experimental to production.
+Use the Developer folder to create your own 'sandbox'. This allows you to experiment with assets freely, without risking the core project.
+The Content Browser has specific View Options that will hide Developer folders (they are hidden by default).
+Once the assets are ready for use, simply move the assets into the project specific folder and fix up redirectors. This is essentially 'promoting' the assets from experimental to production.
 
 <a name="2.4"></a>
 <a name="structure-maps"></a>
 ### 2.4 All Map[<sup>*</sup>](#terms-level-map) Files Belong In A Folder Called Maps
 
-Map files are incredibly special and it is common for every project to have its own map naming system, especially if they work with sub-levels or streaming levels. No matter what system of map organization is in place for the specific project, all levels should belong in `/Content/Project/Maps`.
-
-Being able to tell someone to open a specific map without having to explain where it is is a great time saver and general 'quality of life' improvement. It is common for levels to be within sub-folders of `Maps`, such as `Maps/Campaign1/` or `Maps/Arenas`, but the most important thing here is that they all exist within `/Content/Project/Maps`.
-
-This also simplifies the job of cooking for engineers. Wrangling levels for a build process can be extremely frustrating if they have to dig through arbitrary folders for them. If a team's maps are all in one place, it is much harder to accidentally not cook a map in a build. It also simplifies lighting build scripts as well as QA processes.
+All maps should belong in `/Content/Project/Maps`, or `Content/Project/Modes/ModeName/Maps`
+It is common for levels to be within sub-folders of `Maps`, such as `Maps/Campaign1/` or `Maps/Arenas`.
 
 <a name="2.5"></a>
 <a name="structure-core"></a>
 ### 2.5 Use A `Core` Folder For Critical Blueprints And Other Assets
 
 Use `/Content/Project/Core` folder for assets that are absolutely fundamental to a project's workings. For example, base `GameMode`, `Character`, `PlayerController`, `GameState`, `PlayerState`, and related Blueprints should live here.
-
-This creates a very clear "don't touch these" message for other team members. Non-engineers should have very little reason to enter the `Core` folder. Following good code structure style, designers should be making their gameplay tweaks in child classes that expose functionality. World builders should be using prefab Blueprints in designated folders instead of potentially abusing base classes.
 
 For example, if your project requires pickups that can be placed in a level, there should exist a base Pickup class in `Core/Pickups` that defines base behavior for a pickup. Specific pickups such as a Health or Ammo should exist in a folder such as `/Content/Project/Placeables/Pickups/`. Game designers can define and tweak pickups in this folder however they please, but they should not touch `Core/Pickups` as they may unintentionally break pickups project-wide.
 
@@ -729,8 +653,6 @@ If you find that the content browser has an empty folder you can't delete, you s
 
 This section will focus on Blueprint classes and their internals. When possible, style rules conform to [Epic's Coding Standard](https://docs.unrealengine.com/latest/INT/Programming/Development/CodingStandard).
 
-Remember: Blueprinting badly bears blunders, beware! (Phrase by [KorkuVeren](http://github.com/KorkuVeren))
-
 <a name="3.1"></a>
 <a name="bp-compiling"></a>
 ### 3.1 Compiling
@@ -739,7 +661,7 @@ All blueprints should compile with zero warnings and zero errors. You should fix
 
 Do *not* submit broken blueprints to source control. If you must store them on source control, shelve them instead.
 
-Broken blueprints can cause problems that manifest in other ways, such as broken references, unexpected behavior, cooking failures, and frequent unneeded recompilation. A broken blueprint has the power to break your entire game.
+Broken blueprints can cause problems that manifest in other ways, such as broken references, unexpected behavior, cooking failures, and frequent unneeded recompilation. A broken blueprint has the power to break the entire game.
 
 <a name="3.2"></a>
 <a name="bp-vars"></a>
@@ -767,11 +689,9 @@ All non-boolean variables should be in the form of [PascalCase](#terms-cases).
 ###### 3.2.1.2e Examples
 
 * `Score`
-* `Kills`
 * `TargetPlayer`
-* `Range`
 * `CrosshairColor`
-* `AbilityID`
+* `AbilityId`
 
 <a name="3.2.1.3"></a>
 <a name="bp-var-bool-prefix"></a>
@@ -819,7 +739,6 @@ Consider a Blueprint called `BP_PlayerCharacter`.
 **Bad**
 
 * `PlayerScore`
-* `PlayerKills`
 * `MyTargetPlayer`
 * `MyCharacterName`
 * `CharacterSkills`
@@ -830,7 +749,6 @@ All of these variables are named redundantly. It is implied that the variable is
 **Good**
 
 * `Score`
-* `Kills`
 * `TargetPlayer`
 * `Name`
 * `Skills`
@@ -1006,7 +924,6 @@ Good examples:
 
 * `Fire` - Good example if in a Character / Weapon class, as it has context. Bad if in a Barrel / Grass / any ambiguous class.
 * `Jump` - Good example if in a Character class, otherwise, needs context.
-* `Explode`
 * `ReceiveMessage`
 * `SortPlayerArray`
 * `GetArmOffset`
@@ -1043,7 +960,6 @@ Good examples:
 * `IsOnFire`
 * `IsAlive`
 * `IsSpeaking`
-* `IsHavingAnExistentialCrisis`
 * `IsVisible`
 * `HasWeapon` - ["Has" is a verb.](http://grammar.yourdictionary.com/parts-of-speech/verbs/Helping-Verbs.html)
 * `WasCharging` - ["Was" is past-tense of "be".](http://grammar.yourdictionary.com/parts-of-speech/verbs/Helping-Verbs.html) Use "was" when referring to 'previous frame' or 'previous state'.
@@ -1216,8 +1132,6 @@ This section will focus on Static Mesh assets and their internals.
 <a name="s-uvs"></a>
 ### 4.1 Static Mesh UVs
 
-If Linter is reporting bad UVs and you can't seem to track it down, open the resulting `.log` file in your project's `Saved/Logs` folder for exact details as to why it's failing. I am hoping to include these messages in the Lint report in the future.
-
 <a name="4.1.1"></a>
 <a name="s-uvs-no-missing"></a>
 #### 4.1.1 All Meshes Must Have UVs
@@ -1295,8 +1209,6 @@ All levels should load with zero errors or warnings. If a level loads with any e
 
 You can run a map check on an open level in the editor by using the console command "map check".
 
-Please note: Linter is even more strict on this than the editor is currently, and will catch load errors that the editor will resolve on its own.
-
 <a name="6.2"></a>
 <a name="levels-lighting-should-be-built"></a>
 ### 6.2 Lighting Should Be Built
@@ -1308,32 +1220,6 @@ It is normal during development for levels to occasionally not have lighting bui
 ### 6.3 No Player Visible Z Fighting
 
 Levels should not have any [z-fighting](https://en.wikipedia.org/wiki/Z-fighting) in all areas visible to the player.
-
-<a name="6.4"></a>
-<a name="levels-mp-rules"></a>
-### 6.4 Marketplace Specific Rules
-
-If a project is to be sold on the UE4 Marketplace, it must follow these rules.
-
-<a name="6.4.1"></a>
-<a name="levels-mp-rules-overview"></a>
-#### 6.4.1 Overview Level
-
-If your project contains assets that should be visualized or demoed, you must have a map within your project that contains the name "Overview".
-
-This overview map, if it is visualizing assets, should be set up according to [Epic's guidelines](http://help.epicgames.com/customer/en/portal/articles/2592186-marketplace-submission-guidelines-preparing-your-assets#Required%20Levels%20and%20Maps).
-
-For example, `InteractionComponent_Overview`.
-
-<a name="6.4.2"></a>
-<a name="levels-mp-rules-demo"></a>
-#### 6.4.2 Demo Level
-
-If your project contains assets that should be demoed or come with some sort of tutorial, you must have a map within your project that contains the name "Demo". This level should also contain documentation within it in some form that illustrates how to use your project. See Epic's Content Examples project for good examples on how to do this.
-
-If your project is a gameplay mechanic or other form of system as opposed to an art pack, this can be the same as your "Overview" map.
-
-For example, `InteractionComponent_Overview_Demo`, `ExplosionKit_Demo`.
 
 **[⬆ Back to Top](#table-of-contents)**
 
