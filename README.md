@@ -1,25 +1,18 @@
 Unreal Engine Style Guide
 
-## Style Guide Documentation
-
 ## Table of contents
 - [Important Terminology](#important-terminology)
   - [Identifiers](#terms-identifiers)
   - [Cases](#terms-cases)
 - [00. Globally Enforced Opinions](#00)
   - [00.1 Forbidden Characters](#00.1)
-    - [Identifiers](#identifiers)
 - [1. Asset Naming Conventions](#anc)
   - [1.1 Base Asset Name - `Prefix_BaseAssetName_Variant_Suffix`](#base-asset-name)
-    - [1.1 Examples](#1.1-examples)
   - [1.2 Asset Name Modifiers](#asset-name-modifiers)
-    - [1.2.1 Most Common](#anc-common)
-    - [1.2.2 Animations](#anc-animations)
   - [1.2.3 Artificial Intelligence](#anc-ai)
   - [1.2.4 Blueprints](#anc-bp)
   - [1.2.5 Materials](#anc-materials)
   - [1.2.6 Textures](#anc-textures)
-    - [1.2.6.1 Texture Packing](#anc-textures-packing)
   - [1.2.7 Miscellaneous](#anc-misc)
   - [1.2.8 Paper 2D](#anc-paper2d)
   - [1.2.9 Physics](#anc-physics)
@@ -51,10 +44,7 @@ Unreal Engine Style Guide
       - [3.2.1.2 PascalCase](#bp-var-naming-case)
       - [3.2.1.3 Boolean `b` Prefix](#bp-var-bool-prefix)
       - [3.2.1.4 Boolean Names](#bp-var-bool-names)
-        - [3.2.1.4.1 General And Independent State Information](#3.2.1.4.1)
-        - [3.2.1.4.2 Complex States](#3.2.1.4.2)
       - [3.2.1.5 Considered Context](#bp-vars-naming-context)
-        - [3.2.1.5e Examples](#3.2.1.5e)
       - [3.2.1.6 Do _Not_ Include Atomic Type Names](#bp-vars-naming-atomic)
       - [3.2.1.7 Do Include Non-Atomic Type Names](#bp-vars-naming-complex)
       - [3.2.1.8 Arrays](#bp-vars-naming-arrays)
