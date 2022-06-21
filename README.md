@@ -159,8 +159,6 @@ Most things are prefixed with prefixes being generally an acronym of the asset t
 
 All assets should have a _Base Asset Name_. A Base Asset Name represents a logical grouping of related assets. Any asset that is part of this logical group should follow the standard of  `Prefix_BaseAssetName_Variant_Suffix`.
 
-Keeping the pattern `Prefix_BaseAssetName_Variant_Suffix` and in mind and using common sense is generally enough to warrant good asset names. Here are some detailed rules regarding each element.
-
 `Prefix` and `Suffix` are to be determined by the asset type through the following [Asset Name Modifier](#asset-name-modifiers) tables.
 
 `BaseAssetName` should be determined by a short and easily recognizable name related to the context of this group of assets. For example, if you had a character named Bob, all of Bob's assets would have the `BaseAssetName` of `Bob`.
@@ -464,7 +462,7 @@ As a rule of thumb, there is a organizational format we follow at the project le
         |   |-- Paint
         |   |-- Utility
         |   |-- Weathering
-        |-- <a href="#2.1.2">Modes</a>
+        |-- <a href="#2.1.2">GameModes</a>
         |   |-- CaptureTheFlag
         |   |   |-- Art
         |   |   |   |-- Flags
@@ -489,7 +487,18 @@ As a rule of thumb, there is a organizational format we follow at the project le
             |-- Rifles
 </pre>
 
-The reasons for this structure are listed in the following sub-sections.
+<a name="content-structure-clarification"></a>
+###Content Structutre Clarification
+
+The general idea with this project structure is to narrow down organization to simple questions:
+
+1) Is this asset specific to a game mode?
+   If Yes /Content/GenericShooter/GameModes/<GameModeName>/
+   If No /Content/GenericShooter/
+
+2) Is this critical to the game (i.e. BaseClass)?
+   If Yes /Content/GenericShooter/Core/
+   If No See 1)
 
 <a name="2.1"></a>
 <a name="structure-folder-names"><a>
