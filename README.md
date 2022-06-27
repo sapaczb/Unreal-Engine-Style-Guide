@@ -553,7 +553,7 @@ Once the assets are ready for use, simply move the assets into the project speci
 <a name="structure-maps"></a>
 ### 2.4 All Map[<sup>*</sup>](#terms-level-map) Files Belong In A Folder Called Maps
 
-All maps should belong in `/Content/Project/Maps`, or `Content/Project/Modes/ModeName/Maps`
+All maps should belong in `/Content/Project/Maps`, or `Content/Project/GameModes/GameModeName/Maps`
 It is common for levels to be within sub-folders of `Maps`, such as `Maps/Campaign1/` or `Maps/Arenas`.
 
 <a name="2.5"></a>
