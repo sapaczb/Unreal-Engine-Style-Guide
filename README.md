@@ -268,7 +268,7 @@ When naming an asset, use these tables to determine the prefix and suffix to use
 | Enumeration             | E          |            | No underscore.                   |
 | Structure               | F          |            | No underscore.                   |
 | Tutorial Blueprint      | TBP_       |            |                                  |
-| Widget Blueprint        | WBP_       |            |                                  |
+| Widget Blueprint        | W_         |            |                                  |
 | Gameplay Ability        | GA_        |            |                                  |
 
 <a name="anc-materials"></a>
